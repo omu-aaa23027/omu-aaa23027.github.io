@@ -5,14 +5,33 @@
     <title>内容の変更</title>
 </head>
 <body>
+    <h1>テスト1</h1>
     <form oninput="total.value = Number(price.value) * Number(num.value)">
-      <p><label>単価(円)：<input name="price" type="number" step="any"></label></p>
-      <p><label>数(個)：<input name="num" type="number" step="any"></label></p>
-      <p><label>合計(円):<output name="total" for="price num"></output></label></p>
-    </form>
+    <p><label>単価(円)：<input name="price" type="number" step="any"></label></p>
+    <p><label>数(個)：<input name="num" type="number" step="any"></label></p>
+    <p><label>合計(円):<output name="total" for="price num"></output></label></p>
+</form>
+    <h1>テスト2</h1>
     <form oninput='x.value = function(txt){ return txt.split("").reverse().join("")}(my_text2.value)'>
-      <input id="my_text2">
-      <output id="x"></output>
-    </form>
+    <input id="my_text2">
+    <output id="x"></output>
+</form>
+    <h1>テスト3</h1>
+    <form onsubmit="return false">
+    <input type="number" id="num01"> 演算
+    <input type="number" id="num02"> =
+    <output for="num01 num02" id="result0"></output>
+    
+    <!-- ラジオボタン選択肢 -->
+    <input id="plus" type="radio" name="cal0" value="+" checked>
+    <label for="plus">足す</label>
+    <input id="minus" type="radio" name="cal0" value="-">
+    <label for="minus">引く</label>
+    
+    <button onclick="result0.value = 
+        (cal0[0].checked)? Number(num01.value) + Number(num02.value) :
+        (cal0[1].checked)? Number(num01.value) - Number(num02.value) : NaN">計算</button>
+</form>
+    
 </body>
 </html>
