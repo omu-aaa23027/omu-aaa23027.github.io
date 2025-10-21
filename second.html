@@ -9,11 +9,27 @@
 <body>
     <!-- * 18.5未満：低体重* 18.5～25未満：標準* 25以上：肥満-->
     <h2>BMI指標計算</h2>
-<form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
-    <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
-    <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
-    <p><label>BMI：<output name="bmi"></output></label></p>
-</form>
+    <form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
+        <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
+        <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
+        <p><label>BMI：<output name="bmi"></output></label></p>
+        <button type="button" onclick="judgeBMI()">判定</button>
+    </form>
+
+    <script>
+        function judgeBMI() {
+            const form = document.getElementById("bmiForm");
+            const bmiValue = Number(form.bmi.value);
+            
+            if (bmiValue < 18.5) {
+                document.getElementById("result").textContent = "低体重（やせ型）です";
+            } else if (bmiValue < 25) {
+                document.getElementById("result").textContent = "普通体重です";
+            } else {
+                document.getElementById("result").textContent = "肥満気味です";
+            }
+        }
+    </script>
     
     <div>
         <h1>おすすめの旅行先</h1>
