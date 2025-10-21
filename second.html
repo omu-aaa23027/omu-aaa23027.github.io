@@ -4,23 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <img src="viewtop.jpg" width="400" alt="トップ画像2">
-    <title>おすすめの旅行先</title>
+    <title>BMI判定</title>
 </head>
 <body>
     <!-- * 18.5未満：低体重* 18.5～25未満：標準* 25以上：肥満-->
     <h2>BMI指標計算</h2>
-    <form oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
-        <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
+    <form id="bmiForm"
+        oninput="bmi.value = Math.round(Number(weight.value) / Math.pow(Number(height.value)/100, 2) * 10) / 10">
         <p><label>身長(cm)：<input name="height" type="number" step="any"></label></p>
+        <p><label>体重(kg)：<input name="weight" type="number" step="any"></label></p>
         <p><label>BMI：<output name="bmi"></output></label></p>
         <button type="button" onclick="judgeBMI()">判定</button>
     </form>
+
+    <p id="result"></p>
 
     <script>
         function judgeBMI() {
             const form = document.getElementById("bmiForm");
             const bmiValue = Number(form.bmi.value);
-            
+
+            if (!bmiValue || isNaN(bmiValue)) {
+                document.getElementById("result").textContent = "BMIを入力してください";
+                return;
+            }
+          
             if (bmiValue < 18.5) {
                 document.getElementById("result").textContent = "低体重（やせ型）です";
             } else if (bmiValue < 25) {
